@@ -65,38 +65,38 @@ async function main(): Promise<void> {
 
   document.querySelector("#plot")?.append(barchart);
 
-  const new_data = data.filter(d => d.year === "2010");
+  // const new_data = data.filter(d => d.year === "2010");
 
-  //console.log(data);
-  console.log(data[0].year);
+  // //console.log(data);
+  // console.log(data[0].year);
 
-  const adjusted_data = new_data.map(d => {
-    const popObj = pop_data.find(
-      pd => pd.name === d.region && pd.year === d.year
-    );
-    return {...d, Count: Number(d.count) / (popObj ? Number(popObj.population) : 1)};
-  });
+  // const adjusted_data = new_data.map(d => {
+  //   const popObj = pop_data.find(
+  //     pd => pd.name === d.region && pd.year === d.year
+  //   );
+  //   return {...d, Count: Number(d.count) / (popObj ? Number(popObj.population) : 1)};
+  // });
 
-  const region_chart = Plot.plot({
-    inset: 8,
-    grid: true,
-    color: {
-      legend: true,
-      type: "categorical",
-      scheme: "OrRd"
-    },
-    y: {
-      label: "Total Cases Per Capita"
-    },
-    marks: [
-      Plot.barY(new_data,
-                Plot.groupX({y: "count"},
-                            {x: "Region", fill: "BotType", sort: {x: "-y"}, tip: true})),
-      Plot.ruleY([0])
-    ]
-  });
+  // const region_chart = Plot.plot({
+  //   inset: 8,
+  //   grid: true,
+  //   color: {
+  //     legend: true,
+  //     type: "categorical",
+  //     scheme: "OrRd"
+  //   },
+  //   y: {
+  //     label: "Total Cases Per Capita"
+  //   },
+  //   marks: [
+  //     Plot.barY(new_data,
+  //               Plot.groupX({y: "count"},
+  //                           {x: "Region", fill: "BotType", sort: {x: "-y"}, tip: true})),
+  //     Plot.ruleY([0])
+  //   ]
+  // });
 
-  document.querySelector("#plot")?.append(region_chart);
+  // document.querySelector("#plot")?.append(region_chart);
 
 }
 
